@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 
-alfabeto = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóú,."
+alfabeto = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóú,. "
 print(len(alfabeto))
 def cifrado_cesar(alfabeto,n,texto):
     texto_cifrado = ""
