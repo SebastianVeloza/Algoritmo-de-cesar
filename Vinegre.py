@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #Sebastian Veloza
-alfabeto = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóú,."
+alfabeto = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóú,. "
 
 Lindice = dict(zip(alfabeto, range(len(alfabeto))))
 indiceL = dict(zip(range(len(alfabeto)), alfabeto))
@@ -23,7 +23,7 @@ def cifrado_vinegre(frase, key):
 
 
 def decifrar(cipher, key):
-    decrypted = ""
+    texto_decodificado = ""
     split_encrypted = [
         cipher[i : i + len(key)] for i in range(0, len(cipher), len(key))
     ]
@@ -32,18 +32,18 @@ def decifrar(cipher, key):
         i = 0
         for letra in espacioD:
             N = (Lindice[letra] - Lindice[key[i]]) % len(alfabeto)
-            decrypted += indiceL[N]
+            texto_decodificado += indiceL[N]
             i += 1
 
-    return decrypted
+    return texto_decodificado
 
 
-frase = "Holi"
-key = "sebas"
+frase = "P A R I S  V A U T  B I E N  U N E  M E S S E" #Ejemplo de wikipedia
+key = "L O U P L  O U P L  O U P L  O U P  L O U P L "
 mensaje_escriptado = cifrado_vinegre(frase, key)
 mensaje_decifrado = decifrar(mensaje_escriptado, key)
 
-print("Original frase: " + frase)
-print("Encrypted frase: " + mensaje_escriptado)
-print("Decrypted frase: " + mensaje_decifrado)
+print("La frase a cifrar es: " + frase)
+print("Frase Cifrada =" + mensaje_escriptado)
+print("Frase decifrar=  " + mensaje_decifrado)
 
