@@ -1,50 +1,49 @@
 # -*- coding: utf-8 -*-
-alfabeto = ("ABCDEFGHIJKLMNÑOPQRSTUVWXYZ")
+#Sebastian Veloza
+alfabeto = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóú,."
 
-def main():
-    frase=input("Mensaje: ")
-    myKey="MINOMBREESANTONIOALFONSO"
-    accion=input("Mode: ")
+Lindice = dict(zip(alfabeto, range(len(alfabeto))))
+indiceL = dict(zip(range(len(alfabeto)), alfabeto))
 
-    if accion=='encriptar':
-        traducido=cifrar_mensaje(myKey,frase)
-    elif accion=='descifrar':
-        traducido=descifrar_mensaje(myKey,frase)
-    print(traducido)
 
-def cifrar_mensaje(clave,mensa):
-    return traductor_mensaje(clave,mensa,'encriptar')
+def cifrado_vinegre(frase, key):
+    texto_cifrado = ""
+    espacioMensaje = [
+        frase[i : i + len(key)] for i in range(0, len(frase), len(key))
+    ]
 
-def descifrar_mensaje(clave,mensa):
-    return traductor_mensaje(clave,mensa,'descifrar')
+    for espacioD in espacioMensaje:
+        i = 0
+        for letra in espacioD:
+            N = (Lindice[letra] + Lindice[key[i]]) % len(alfabeto)
+            texto_cifrado += indiceL[N]
+            i += 1
 
-def traductor_mensaje(clave,mensa,accion):
-    traducido=[]
-    indice_clave=0
-    clave=clave.upper()
+    return texto_cifrado
 
-    for symbol in mensa:
-        num=alfabeto.find(symbol.upper())
-        if num!=-1:
-            if accion=='encriptar':
-                num+=alfabeto.find(clave[indice_clave])
-            elif accion=='descifrar':
-                num-=alfabeto.find(clave[indice_clave])
-            num%=len(alfabeto
-        )
-            if symbol.isupper():
-                traducido.append(alfabeto
-            [num])
-            elif symbol.islower():
-                traducido.append(alfabeto
-            [num].lower())
-            indice_clave+=1
-            if indice_clave==len(clave):
-                indice_clave=0
 
-        else:
-            traducido.append(symbol)
-    return ('').join(traducido)
+def decifrar(cipher, key):
+    decrypted = ""
+    split_encrypted = [
+        cipher[i : i + len(key)] for i in range(0, len(cipher), len(key))
+    ]
 
-if __name__ == '__main__':
-    main()
+    for espacioD in split_encrypted:
+        i = 0
+        for letra in espacioD:
+            N = (Lindice[letra] - Lindice[key[i]]) % len(alfabeto)
+            decrypted += indiceL[N]
+            i += 1
+
+    return decrypted
+
+
+frase = "Holi"
+key = "sebas"
+mensaje_escriptado = cifrado_vinegre(frase, key)
+mensaje_decifrado = decifrar(mensaje_escriptado, key)
+
+print("Original frase: " + frase)
+print("Encrypted frase: " + mensaje_escriptado)
+print("Decrypted frase: " + mensaje_decifrado)
+
