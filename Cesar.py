@@ -1,4 +1,5 @@
 #Sebastian Veloza
+# -*- coding: utf-8 -*-
 
 
 alfabeto = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóú,."
