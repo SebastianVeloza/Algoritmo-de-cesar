@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #Sebastian Veloza
-alfabeto = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóú,. "
-
+#alfabeto = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóú,. "
+alfabeto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
 Lindice = dict(zip(alfabeto, range(len(alfabeto))))
 indiceL = dict(zip(range(len(alfabeto)), alfabeto))
 
@@ -38,10 +38,14 @@ def decifrar(cipher, key):
     return texto_decodificado
 
 
-frase = "P A R I S  V A U T  B I E N  U N E  M E S S E" #Ejemplo de wikipedia
-key = "L O U P L  O U P L  O U P L  O U P  L O U P L "
+#frase = "P A R I S  V A U T  B I E N  U N E  M E S S E" #Ejemplo de wikipedia
+#key = "L O U P L  O U P L  O U P L  O U P  L O U P L "
+frase="PBVRQVICADSKAÑSDETSJPSIEDBGGMPSLRPWRÑPWYEDSDEÑDRDPCRCPQMNPWKUBZVSFNVRDMTIPWUEQVVCBOVNUEDIFQLONMVNUVRSEIKAZYEACEYEDSETFPHLBHGUÑESOMEHLBXVAEEPUÑELISEUEFWHUNMCLPQPMBRRNBPVIÑMTIBVVEÑICANSJAMTJOKMDODSELPWIUFOZMQMVNFOHASESRJWRSFQCOTMVMBJGRPWVSUEXINQRSJEUEMGGRBDGNNILAGSJIDSVSUEEINTGRUEETFGGMPORDFOGTSSTOSEQOÑTGRRYVLPWJIFWXOTGGRPQRRJSKETXRNBLZETGGNEMUOTXJATORVJHRSFHVNUEJIBCHASEHEUEUOTIEFFGYATGGMPIKTBWUEÑENIEEU"
+key="ABER"
+
 mensaje_escriptado = cifrado_vinegre(frase, key)
-mensaje_decifrado = decifrar(mensaje_escriptado, key)
+#mensaje_decifrado = decifrar(mensaje_escriptado, key)
+mensaje_decifrado = decifrar(frase, key)
 
 print("La frase a cifrar es: " + frase)
 print("Frase Cifrada =" + mensaje_escriptado)
