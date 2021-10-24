@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #Sebastian Veloza
-#alfabeto = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóú,. "
-alfabeto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
+alfabeto = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZáéíóú,. "
+#alfabeto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
 Lindice = dict(zip(alfabeto, range(len(alfabeto))))
 indiceL = dict(zip(range(len(alfabeto)), alfabeto))
 
@@ -22,13 +22,13 @@ def cifrado_vinegre(frase, key):
     return texto_cifrado
 
 
-def decifrar(cipher, key):
+def decifrar(cifrado, key):
     texto_decodificado = ""
-    split_encrypted = [
-        cipher[i : i + len(key)] for i in range(0, len(cipher), len(key))
+    encrip = [
+        cifrado[i : i + len(key)] for i in range(0, len(cifrado), len(key))
     ]
 
-    for espacioD in split_encrypted:
+    for espacioD in encrip:
         i = 0
         for letra in espacioD:
             N = (Lindice[letra] - Lindice[key[i]]) % len(alfabeto)
@@ -38,14 +38,14 @@ def decifrar(cipher, key):
     return texto_decodificado
 
 
-#frase = "P A R I S  V A U T  B I E N  U N E  M E S S E" #Ejemplo de wikipedia
-#key = "L O U P L  O U P L  O U P L  O U P  L O U P L "
-frase="PBVRQVICADSKAÑSDETSJPSIEDBGGMPSLRPWRÑPWYEDSDEÑDRDPCRCPQMNPWKUBZVSFNVRDMTIPWUEQVVCBOVNUEDIFQLONMVNUVRSEIKAZYEACEYEDSETFPHLBHGUÑESOMEHLBXVAEEPUÑELISEUEFWHUNMCLPQPMBRRNBPVIÑMTIBVVEÑICANSJAMTJOKMDODSELPWIUFOZMQMVNFOHASESRJWRSFQCOTMVMBJGRPWVSUEXINQRSJEUEMGGRBDGNNILAGSJIDSVSUEEINTGRUEETFGGMPORDFOGTSSTOSEQOÑTGRRYVLPWJIFWXOTGGRPQRRJSKETXRNBLZETGGNEMUOTXJATORVJHRSFHVNUEJIBCHASEHEUEUOTIEFFGYATGGMPIKTBWUEÑENIEEU"
-key="ABER"
+frase = "El hijo de rana,Rinrín renacuajo salió esta mañana muy tioso, muy majo. Con pantalon corto, corbata a la moda sobrero encintado y chupa de boda." #Ejemplo de clase
+key = "ABER"
+#frase="PBVRQVICADSKAÑSDETSJPSIEDBGGMPSLRPWRÑPWYEDSDEÑDRDPCRCPQMNPWKUBZVSFNVRDMTIPWUEQVVCBOVNUEDIFQLONMVNUVRSEIKAZYEACEYEDSETFPHLBHGUÑESOMEHLBXVAEEPUÑELISEUEFWHUNMCLPQPMBRRNBPVIÑMTIBVVEÑICANSJAMTJOKMDODSELPWIUFOZMQMVNFOHASESRJWRSFQCOTMVMBJGRPWVSUEXINQRSJEUEMGGRBDGNNILAGSJIDSVSUEEINTGRUEETFGGMPORDFOGTSSTOSEQOÑTGRRYVLPWJIFWXOTGGRPQRRJSKETXRNBLZETGGNEMUOTXJATORVJHRSFHVNUEJIBCHASEHEUEUOTIEFFGYATGGMPIKTBWUEÑENIEEU"
+#key="ABER"
 
 mensaje_escriptado = cifrado_vinegre(frase, key)
-#mensaje_decifrado = decifrar(mensaje_escriptado, key)
-mensaje_decifrado = decifrar(frase, key)
+mensaje_decifrado = decifrar(mensaje_escriptado, key)
+
 
 print("La frase a cifrar es: " + frase)
 print("Frase Cifrada =" + mensaje_escriptado)
